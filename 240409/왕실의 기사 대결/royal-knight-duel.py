@@ -20,7 +20,7 @@ for m in range(1, N+1): # 기사들에 대한 입력
 def push_unit(start, dr):       # s를 밀고, 연쇄처리..
     q = []       #밀 대상들       # push 후보를 저장
     pset = set()                # 이동 기사번호 저장(중복체크 위함)
-    damage = [0]*(M+1)          # 각 유닛별 데미지 누적 
+    damage = [0]*(N+1)          # 각 유닛별 데미지 누적 
 
     q.append(start)             # 초기데이터 append
     pset.add(start)
