@@ -66,7 +66,7 @@ def push_unit(start, dr):       # s를 밀고, 연쇄처리..
 
 for _ in range(Q):
   idx, dr = map(int,input().split())
-  if id in units:
+  if idx in units:
     push_unit(idx,dr)
 
 
