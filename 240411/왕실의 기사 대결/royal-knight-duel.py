@@ -84,13 +84,14 @@ for i in range(1,N+1): # 이렇게 해야 units 인덱스 시작 1로 가능
 
 def push_unit(idx,dr,arr,units,di,dj):
     q=[]     #밀 대상들       # push 후보를 저장
-    pset=set()            # 이동 기사번호 저장(중복체크 위함)
+    pset=[]        # 이동 기사번호 저장(중복체크 위함)
     damage=[0]*(N+1)     # 각 유닛별 데미지 누적 
     q.append(idx)      # 초기데이터 append
-    pset.add(idx)
+    pset.append(idx)
 
     while q:# q에 데이터가 있는 동안 
-        cur=q.pop()     # 첫번째 요소 제거  # q에서 데이터 한개 꺼냄 #기사 번호  # q: 선입선출 FIFO 이므로 # q.pop()은 끝에 요소 제거 
+        cur=q.pop(0)     # 첫번째 요소 제거  # q에서 데이터 한개 꺼냄 #기사 번호  # q: 선입선출 FIFO 이므로 # q.pop()은 끝에 요소 제거 
+                        # 근데 돌려보니 또 상관 없긴함 
         ci,cj,h,w,k= units[cur] # 기사 위치 가져오기 #cur 0,1,2,3 순 
 
         ni,nj= ci+di[dr], cj+dj[dr]# 명령받은 방향진행, 벽이아니면, 겹치는 다른조각이면 => 큐에 삽입
@@ -108,7 +109,7 @@ def push_unit(idx,dr,arr,units,di,dj):
 
             if ni<=ti+th-1 and ni+h-1>=ti and tj<=nj+w-1 and nj<=tj+tw-1: # 겹치는 경우
                 q.append(i)
-                pset.add(i)     
+                pset.append(i)     
 
     # 명령 받은 기사는 데미지 입지 않음
     damage[idx]=0 # 다시 0으로 맞추기 
