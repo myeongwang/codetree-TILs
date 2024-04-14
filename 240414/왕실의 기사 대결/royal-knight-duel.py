@@ -42,7 +42,9 @@ def push_unit(start, dr):       # s를 밀고, 연쇄처리..
 
             ti,tj,th,tw,tk=units[idx]
             # 겹치는 경우
-            if ni<= ti+th-1 and nj<= tj+tw-1 and ni+h-1>= ti and nj+w-1>= tj
+            if ni<= ti+th-1 and nj<= tj+tw-1 and ni+h-1>= ti and nj+w-1>= tj:
+            # if ni<=ti+th-1 and ni+h-1>=ti and tj<=nj+w-1 and nj<=tj+tw-1:
+
                 q.append(idx) # 겹치면 q에 추가
                 pset.add(idx) # 겹치면 pset에 추가 
 
@@ -75,7 +77,7 @@ def push_unit(start, dr):       # s를 밀고, 연쇄처리..
             units.pop(idx)
         else:
             ni,nj=si+di[dr], sj+dj[dr]
-            units[idx]=[ni,nj,h,w,k-damage[idx]]
+            units[idx]=[ni,nj,h,w,k-damage[idx]] # 새로운 이동 구현 및 데미지 초기화 
             # for i in range(ni,ni+h):
             #     v[i][nj:nj+w]=[idx]*w     # 이동위치에 표시
 
