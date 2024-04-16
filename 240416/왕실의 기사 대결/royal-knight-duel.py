@@ -56,8 +56,8 @@ def push_units(start,dr):
 
 for _ in range(Q):
     idx, dr = map(int,input().split())
-    if idx in units:
-        push_units(idx,dr)
+    #if idx in units:
+    push_units(idx,dr)
 
 ans = 0
 
